@@ -12,14 +12,14 @@ const Banner: React.FC = () => {
         bannerScene.bounceAnimate()
 
         const loader = new GLTFLoader();
-        loader.load('../../assets/models/MacBook.glb', (gltf) => {
+        loader.load('/assets/models/MacBook.glb', (gltf) => {
             console.log(gltf)
             bannerScene.loadedModel = gltf;
             const loadedModel = gltf.scene;
             screen = loadedModel.getObjectByName('Screen')
             // screen?.setRotationFromEuler(new THREE.Euler(0, 0, 0))
             const textureLoader = new THREE.TextureLoader();
-            const screenTexture = textureLoader.load("../../assets/Zero-white-logo.png", (texture) => {
+            const screenTexture = textureLoader.load("/assets/Zero-white-logo.png", (texture) => {
                 texture.flipY = false;
                 texture.colorSpace = THREE.SRGBColorSpace;
             })
@@ -75,11 +75,11 @@ const Banner: React.FC = () => {
                     {/* <img src={undefined} alt="Image" className=" image-fluid rounded-circle p-2" /> */}
                 </div>
                 <div className="leading-10">
-                    <h5 className='text- leading-10 font-medium'>Calicut,Kerala,India</h5>
-                    <h2 className='text-4xl leading-10 font-semibold'>SOFTWARE ENGINEER</h2>
-                    <h5 className='text-xl leading-10 font-medium'>Calicut,Kerala,India</h5>
-                    <p>"You are the average of 5 people you hang around"
-                        <span>-irfan</span>
+                    <h5 className='text- leading-10 font-medium tracking-widest text-tertiary'>Hi! I am a</h5>
+                    <h2 className='text-4xl leading-10 font-semibold'>MERN STACK DEVELOPER</h2>
+                    <h5 className='text-xl leading-10 font-medium text-tertiary'>And a Frappe Developer</h5>
+                    <p className='leading-normal max-w-[600px]'>A curious, product-focused problem solver with strong troubleshooting skills. Skilled in
+                    mentoring and continuous self-learning to stay updated with new technologies.
                     </p>
                 </div>
             </div>

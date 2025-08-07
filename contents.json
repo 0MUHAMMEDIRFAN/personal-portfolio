@@ -44,6 +44,7 @@
         {
             "name": "Dentsoft",
             "company": "WHITEJSON",
+            "imagePath":"/assets/thumbnails/dentsoft-thumbnail-2.png",
             "technologies": [
                 "React.js",
                 "Tailwind",

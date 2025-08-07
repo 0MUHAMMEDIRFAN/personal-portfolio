@@ -87,7 +87,7 @@ class Scene3d {
             this.renderer.setSize(canvasParent.clientWidth, canvasParent.clientHeight);
         }
     }
-    bounceAnimate(bounceSpeed: number = 0.06, bounceHeight: number = 0.3) {
+    bounceAnimate(bounceSpeed: number = 0.1, bounceHeight: number = 2) {
         let direction = 1; // Controls movement direction
 
         const bounceMacbook = () => {

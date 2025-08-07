@@ -6,7 +6,16 @@ import "react-vertical-timeline-component/style.min.css";
 import contents from '../../contents.json';
 
 
-const ExperienceCard = ({ title, company, duration, tenure, description, icon }) => {
+interface ExperienceCardProps {
+    title: string;
+    company: string;
+    duration?: string; // Optional since it's not used
+    tenure: string;
+    description: string[];
+    icon: string;
+}
+
+const ExperienceCard: React.FC<ExperienceCardProps> = ({ title, company, tenure, description, icon }) => {
     return (
         <VerticalTimelineElement
             contentStyle={{
@@ -67,7 +76,7 @@ const ExperienceCard = ({ title, company, duration, tenure, description, icon })
 //         </div>
 //     </VerticalTimelineElement>
 // )
-const textVariant = (delay) => {
+const textVariant = (delay: number) => {
     return {
         hidden: {
             y: -50,
@@ -88,7 +97,7 @@ const textVariant = (delay) => {
 const Experience: React.FC = () => {
     return (
         <section className="" id="">
-            <motion.div variants={textVariant()}>
+            <motion.div variants={textVariant(1)}>
                 <p className={"text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px] text-center"}>
                     What I have done so far
                 </p>

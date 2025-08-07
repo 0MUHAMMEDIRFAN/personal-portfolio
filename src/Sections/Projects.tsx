@@ -1,10 +1,10 @@
 import React from 'react';
-import Card from '../Components/Card';
+// import Card from '../Components/Card';
 import contents from '../../contents.json';
 import { SectionWrapper } from '../hoc';
 import { motion } from 'framer-motion'
 
-const fadeIn = (direction, type, delay, duration) => {
+const fadeIn = (direction: "left" | "right" | "up" | "down", type: string, delay: number, duration: number) => {
     return {
         hidden: {
             x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
@@ -25,7 +25,7 @@ const fadeIn = (direction, type, delay, duration) => {
     };
 };
 
-const textVariant = (delay) => {
+const textVariant = (delay: number) => {
     return {
         hidden: {
             y: -50,
@@ -44,7 +44,16 @@ const textVariant = (delay) => {
 };
 
 
-const ProjectCard = ({
+interface ProjectCardProps {
+    index: number;
+    name: string;
+    description: string[];
+    technologies: string[];
+    image?: string;
+    source_code_link?: string;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({
     index,
     name,
     description,
@@ -128,7 +137,7 @@ const Projects: React.FC = () => {
         // </div>
 
         <>
-            <motion.div variants={textVariant()}>
+            <motion.div variants={textVariant(1)}>
                 <p className={"text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px] text-center"}>
                     My work</p>
                 <h2 className={`text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] text-center`}>
@@ -137,7 +146,7 @@ const Projects: React.FC = () => {
 
             <div className='w-full flex justify-center text-center'>
                 <motion.p
-                    variants={fadeIn("", "", 0.1, 1)}
+                    variants={fadeIn("up", "", 0.1, 1)}
                     className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
                 >
                     Following projects showcases my skills and experience through
@@ -150,7 +159,7 @@ const Projects: React.FC = () => {
 
             <div className='mt-20 flex flex-wrap gap-7 justify-center'>
                 {contents.projects.map((project, index) => (
-                    <ProjectCard key={`project-${index}`} index={index} {...project} />
+                    <ProjectCard key={`project-${index}`} index={index} name={project.name} description={project.description} technologies={project.technologies} image={project.imagePath}  />
                 ))}
             </div>
         </>

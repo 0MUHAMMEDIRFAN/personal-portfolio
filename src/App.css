@@ -1,5 +1,5 @@
 #Banner3dParent {
-  background-image: url('./assets/hexagon-bg.png');
+  background-image: url('/assets/hexagon-bg.png');
   filter: none;
   background-size: cover;
   background-position: center;
