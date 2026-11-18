@@ -3,6 +3,7 @@ import Scene3d from '../lib/Scene3d';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import gsap from 'gsap';
+import contents from '../../contents.json';
 
 const Banner: React.FC = () => {
     useEffect(() => {
@@ -93,6 +94,16 @@ const Banner: React.FC = () => {
                         <p>
                             I'm Muhammed Irfan, a software engineer with 3+ years of experience specializing in Frappe/ERPNext and full-stack web and mobile development. I architect custom Frappe applications and ERPNext implementations across HR, CRM, Healthcare, Manufacturing, and core business workflows (Sales Orders, Sales Invoices, Purchase Orders), alongside production web and mobile apps built with Next.js, the MERN stack, and React Native.
                         </p>
+                    </div>
+
+                    {/* Authority Stats Grid (12K+ Followers, Experience, Reviews, Awards) */}
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                        {contents.stats.map((stat, sIdx) => (
+                            <div key={sIdx} className="bg-primary-alt/90 border border-white/10 hover:border-tertiary/40 transition-colors rounded-xl p-3 flex flex-col items-center text-center">
+                                <span className="text-xl sm:text-2xl font-black text-tertiary">{stat.value}</span>
+                                <span className="text-[11px] sm:text-xs text-secondary-alt font-medium mt-1 leading-snug">{stat.label}</span>
+                            </div>
+                        ))}
                     </div>
 
                     {/* Action buttons & Socials */}

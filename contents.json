@@ -274,6 +274,132 @@
       "location": "Calicut, Kerala"
     }
   ],
+  "stats": [
+    {
+      "value": "12K+",
+      "label": "LinkedIn Followers",
+      "icon": "fa-brands fa-linkedin-in"
+    },
+    {
+      "value": "3+ Years",
+      "label": "Engineering Experience",
+      "icon": "fa-solid fa-code"
+    },
+    {
+      "value": "200+",
+      "label": "Code & Architecture Reviews",
+      "icon": "fa-solid fa-check-double"
+    },
+    {
+      "value": "BUILD 2025",
+      "label": "Engineering Award Winner",
+      "icon": "fa-solid fa-trophy"
+    }
+  ],
+  "linkedinPosts": [
+    {
+      "id": 1,
+      "tag": "ERPNext & Automation",
+      "date": "Featured LinkedIn Insight",
+      "title": "Scaling Business Operations with Frappe & ERPNext Custom Workflows",
+      "snippet": "How architecting custom DocTypes, server scripts, and event hooks in ERPNext eliminates 80%+ of repetitive manual entries across Sales Invoices, Purchase Orders, and Inventory management.",
+      "takeaways": [
+        "Automated cross-DocType data propagation using Frappe Python hooks",
+        "Reduced order processing lag from 4 hours to instantaneous validation",
+        "Integrated granular role-based permissions across HR and Finance modules"
+      ],
+      "url": "https://www.linkedin.com/in/0muhammedirfan",
+      "engagement": "12k+ Community Reach"
+    },
+    {
+      "id": 2,
+      "tag": "Meta Cloud API",
+      "date": "Technical Case Study",
+      "title": "Meta WhatsApp Cloud API Integration for Real-Time ERP Alerts",
+      "snippet": "Direct webhook architecture connecting ERPNext events to Meta's Official Cloud API: Sending instant interactive customer updates, order tracking, and invoice dispatch messages.",
+      "takeaways": [
+        "Reliable asynchronous webhook handling with queuing and exponential backoff",
+        "Dynamic WhatsApp message templates approved for business transactions",
+        "Two-way customer reply routing into ERPNext CRM leads and support tickets"
+      ],
+      "url": "https://www.linkedin.com/in/0muhammedirfan",
+      "engagement": "Highly Discussed"
+    },
+    {
+      "id": 3,
+      "tag": "Full-Stack Architecture",
+      "date": "Engineering Deep Dive",
+      "title": "Unifying Next.js Web and React Native Mobile Under One Shared API",
+      "snippet": "Lessons learned migrating multi-brand e-commerce platforms (Skin Secrets & 4B Coffee) to Next.js while syncing React Native / Expo mobile apps with an ERPNext backbone.",
+      "takeaways": [
+        "Single source of truth for TypeScript types, API client, and business rules",
+        "Drastic reduction in server response latency using Next.js caching & SSR",
+        "Offline-first mobile resilience with seamless background synchronization"
+      ],
+      "url": "https://www.linkedin.com/in/0muhammedirfan",
+      "engagement": "Community Favorite"
+    },
+    {
+      "id": 4,
+      "tag": "Healthcare Tech",
+      "date": "Frappe Healthcare",
+      "title": "DentSoft: Migrating Clinical Practice Management to the Frappe Framework",
+      "snippet": "Transitioning clinical desktop software to Frappe Healthcare + React UI with Doppio: Managing patient history, appointments, prescription printing, and cross-platform desktop distribution with Electron.",
+      "takeaways": [
+        "Modular Frappe DocTypes for dental charts, appointments, and billings",
+        "Custom desktop packaging with Electron while maintaining local cache",
+        "High-performance responsive UI built with React, TypeScript & Tailwind"
+      ],
+      "url": "https://www.linkedin.com/in/0muhammedirfan",
+      "engagement": "12k+ Audience"
+    },
+    {
+      "id": 5,
+      "tag": "Code Quality",
+      "date": "Mentorship & Reviews",
+      "title": "Key Takeaways from Conducting 200+ Architecture & Code Reviews",
+      "snippet": "Reflections from reviewing hundreds of production MERN & Next.js codebases at Bridgeon Solutions: Common architectural pitfalls, state management anti-patterns, and database query optimization.",
+      "takeaways": [
+        "Eliminating N+1 queries through proper indexing and relationship lookups",
+        "Separation of concerns: moving business logic out of UI controllers into service layers",
+        "Enforcing strict TypeScript contracts to catch runtime bugs before production"
+      ],
+      "url": "https://www.linkedin.com/in/0muhammedirfan",
+      "engagement": "Industry Takeaways"
+    },
+    {
+      "id": 6,
+      "tag": "POS & Retail",
+      "date": "UI & Hardware Engineering",
+      "title": "Engineering High-Throughput POS Systems: Stock Validation & Custom Thermal Printing",
+      "snippet": "Architecture of XSellPOS retail software: Real-time stock validation logic, flexible dynamic UI themes, and low-latency configurable thermal receipt and invoice printing controls.",
+      "takeaways": [
+        "Millisecond-level barcode lookup and validation during peak retail traffic",
+        "Custom ESC/POS printer driver integration for hardware printing",
+        "Fail-safe offline transaction queuing with automatic cloud sync"
+      ],
+      "url": "https://www.linkedin.com/in/0muhammedirfan",
+      "engagement": "Trending Post"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Who is Muhammed Irfan (0muhammedirfan)?",
+      "answer": "Muhammed Irfan (also known as 0muhammedirfan or Irfan Nadapuram) is a Lead Software Engineer and Frappe / ERPNext Developer with 3+ years of experience. He is the founder of ZERO NEXA and has over 12,000+ followers on LinkedIn. He specializes in ERPNext business workflows, Next.js web applications, React Native mobile apps, and Meta WhatsApp Cloud API automations."
+    },
+    {
+      "question": "What ERPNext and Frappe services does Muhammed Irfan provide?",
+      "answer": "Muhammed Irfan provides end-to-end ERPNext deployment, custom Frappe app development, DocType architecture, workflow customization for HR, CRM, Manufacturing, Healthcare, and Sales/Purchase operations, as well as Doppio-powered modern React frontends and Meta WhatsApp Cloud API integrations."
+    },
+    {
+      "question": "What is Muhammed Irfan's full-stack technology stack?",
+      "answer": "His core stack includes Frappe Framework, ERPNext, Python, Next.js, React, TypeScript, React Native, Expo, Node.js, Express, MongoDB (MERN Stack), Tailwind CSS, Electron.js, Docker, and Linux."
+    },
+    {
+      "question": "How can I connect with Muhammed Irfan or follow his work?",
+      "answer": "You can connect with Muhammed Irfan on LinkedIn at linkedin.com/in/0muhammedirfan (join his 12K+ professional network), explore his open-source code on GitHub at github.com/0MUHAMMEDIRFAN, follow his updates on Instagram at instagram.com/0muhammedirfan, or read his articles on Medium at medium.com/@irfannadapuram."
+    }
+  ],
   "certificates": [
     {
       "title": "BUILD 2025 Conference Award",

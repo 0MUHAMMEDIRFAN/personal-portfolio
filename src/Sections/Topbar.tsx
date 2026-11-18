@@ -8,7 +8,9 @@ const TopBar: React.FC = () => {
         { heading: 'Home', href: '#home' },
         // { heading: 'Projects', href: '#projects' }, // Hidden as requested
         { heading: 'Skills', href: '#skills' },
+        { heading: 'Insights', href: '#insights' },
         { heading: 'Experience', href: '#experience' },
+        { heading: 'FAQ', href: '#faq' },
     ];
 
     const socials = contents.socials || [];
