@@ -1,24 +1,25 @@
-// import { useState } from 'react'
-import './App.css'
-// import Services from './Sections/Services'
-import Experience from './Sections/Experience'
-import Footer from './Sections/Footer'
-import TopBar from './Sections/Topbar'
-import Banner from './Sections/Banner'
-import Projects from './Sections/Projects'
+import './App.css';
+import TopBar from './Sections/Topbar';
+import Banner from './Sections/Banner';
+// import Projects from './Sections/Projects'; // Hidden as requested
+import Skills from './Sections/Skills';
+import Experience from './Sections/Experience';
+import Footer from './Sections/Footer';
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
-    <>
+    <div className="bg-primary text-secondary min-h-screen overflow-x-hidden">
       <TopBar />
-      <Banner />
-      <Projects />
-      <Experience />
+      <main>
+        <Banner />
+        {/* Projects section temporarily hidden as requested */}
+        {/* <Projects /> */}
+        <Skills />
+        <Experience />
+      </main>
       <Footer />
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

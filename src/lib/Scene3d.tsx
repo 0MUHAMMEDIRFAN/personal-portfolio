@@ -12,6 +12,12 @@ class Scene3d {
     controls: OrbitControls;
     canvas: HTMLCanvasElement;
     loadedModel: GLTF | undefined;
+    private animFrameId: number | null = null;
+    private bounceFrameId: number | null = null;
+    private isDestroyed = false;
+
+    private resizeHandler: () => void;
+    private dragOutHandler: () => void;
 
     constructor(canvasId: string, parentId: string) {
         const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
@@ -20,90 +26,108 @@ class Scene3d {
         this.fov = 5;
 
         this.scene = new THREE.Scene();
-        
         this.scene.background = null;
-        this.camera = new THREE.PerspectiveCamera(this.fov, canvas.clientWidth / canvas.clientHeight, 1, 1000);
+
+        const initialWidth = canvas?.clientWidth || 350;
+        const initialHeight = canvas?.clientHeight || 250;
+        this.camera = new THREE.PerspectiveCamera(this.fov, initialWidth / initialHeight, 1, 1000);
 
         const renderer = new THREE.WebGLRenderer({
             canvas,
             antialias: true,
-            alpha: true
+            alpha: true,
+            powerPreference: 'high-performance',
         });
         this.renderer = renderer;
+        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
         this.clock = new THREE.Clock();
 
-        this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+        this.controls = new OrbitControls(this.camera, this.renderer.domElement);
         this.controls.enableZoom = false;
-        // this.controls.enableRotate = false;
         this.controls.enablePan = false;
+        this.controls.enableDamping = true;
+        this.controls.dampingFactor = 0.05;
 
+        this.resizeHandler = () => this.onWindowResize();
+        this.dragOutHandler = () => this.onDragOut();
     }
 
     initialize() {
-
         this.camera.position.z = 500;
         this.camera.position.x = -200;
         this.camera.position.y = 150;
 
+        const width = this.canvas.clientWidth || 350;
+        const height = this.canvas.clientHeight || 250;
+        this.renderer.setSize(width, height, false);
 
-        this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+        this.scene.add(ambientLight);
 
-        // document.body.appendChild(this.renderer.domElement);
-
-        document.getElementById(this.parentId)?.appendChild(this.renderer.domElement);
-
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
-        ambientLight.castShadow = true;
-        this.scene.add(ambientLight)
-
-        const spotLight = new THREE.SpotLight(0xffffff, 1)
-        spotLight.castShadow = true;
+        const spotLight = new THREE.SpotLight(0xffffff, 1.2);
         spotLight.position.set(0, 64, 32);
-        this.scene.add(spotLight)
+        this.scene.add(spotLight);
 
-        window.addEventListener('resize', () => this.onWindowResize(), false);
-        window.addEventListener('mouseup', () => { this.onDragOut() }, false);
-        window.addEventListener('touchend', () => { this.onDragOut() }, false);
+        window.addEventListener('resize', this.resizeHandler, { passive: true });
+        window.addEventListener('mouseup', this.dragOutHandler, { passive: true });
+        window.addEventListener('touchend', this.dragOutHandler, { passive: true });
 
-
+        // Trigger initial resize after DOM layout settles
+        requestAnimationFrame(() => this.onWindowResize());
     }
+
     animate() {
-        this.controls.update()
+        if (this.isDestroyed) return;
+        this.controls.update();
         this.renderer.render(this.scene, this.camera);
-        window.requestAnimationFrame(this.animate.bind(this));
+        this.animFrameId = window.requestAnimationFrame(this.animate.bind(this));
     }
+
     onDragOut() {
+        if (this.isDestroyed) return;
         setTimeout(() => {
-            gsap.to(this.camera.position, { x: -200, y: 150, z: 500, duration: 1, ease: 'back' })
+            if (!this.isDestroyed) {
+                gsap.to(this.camera.position, { x: -200, y: 150, z: 500, duration: 1, ease: 'back.out(1.2)' });
+            }
         }, 200);
     }
+
     onWindowResize() {
-        const canvasParent = document.getElementById(this.parentId)
-        // console.log(canvasParent?.clientWidth)
-        if (canvasParent) {
+        if (this.isDestroyed) return;
+        const canvasParent = document.getElementById(this.parentId);
+        if (canvasParent && canvasParent.clientWidth > 0 && canvasParent.clientHeight > 0) {
             this.camera.aspect = canvasParent.clientWidth / canvasParent.clientHeight;
             this.camera.updateProjectionMatrix();
-            this.renderer.setSize(canvasParent.clientWidth, canvasParent.clientHeight);
+            this.renderer.setSize(canvasParent.clientWidth, canvasParent.clientHeight, false);
         }
     }
-    bounceAnimate(bounceSpeed: number = 0.1, bounceHeight: number = 2) {
-        let direction = 1; // Controls movement direction
+
+    bounceAnimate(bounceSpeed: number = 0.08, bounceHeight: number = 2) {
+        let direction = 1;
 
         const bounceMacbook = () => {
+            if (this.isDestroyed) return;
             if (this.scene) {
-                this.scene.position.y += bounceSpeed * direction; // Move up/down
-
-                // Reverse direction when reaching max/min height
+                this.scene.position.y += bounceSpeed * direction;
                 if (this.scene.position.y > bounceHeight || this.scene.position.y < -bounceHeight) {
-                    direction *= -1; // Change direction
+                    direction *= -1;
                 }
             }
-
-            window.requestAnimationFrame(bounceMacbook); // Keep animating
-        }
+            this.bounceFrameId = window.requestAnimationFrame(bounceMacbook);
+        };
 
         bounceMacbook();
+    }
+
+    destroy() {
+        this.isDestroyed = true;
+        if (this.animFrameId !== null) cancelAnimationFrame(this.animFrameId);
+        if (this.bounceFrameId !== null) cancelAnimationFrame(this.bounceFrameId);
+        window.removeEventListener('resize', this.resizeHandler);
+        window.removeEventListener('mouseup', this.dragOutHandler);
+        window.removeEventListener('touchend', this.dragOutHandler);
+        this.controls.dispose();
     }
 }
 

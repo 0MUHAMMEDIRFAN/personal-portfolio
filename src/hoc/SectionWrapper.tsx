@@ -1,25 +1,21 @@
-// import
-
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import React from "react";
 
 const SectionWrapper = (Component: React.FC, idName: string) =>
     function HOC() {
         return (
             <motion.section
-                // variants={}
-                // animate={{ scale: 1.1, transition: { duration: 2 } }}
                 initial='hidden'
                 whileInView='show'
-                viewport={{ once: true, amount: 0.25 }}
-                className="relative z-0 sm:px-16 px-6 sm:py-16 py-10"
+                viewport={{ once: true, amount: 0.1 }}
+                className="relative z-0 sm:px-12 px-4 sm:py-16 py-12 max-w-7xl mx-auto"
             >
-                <span className='' id={idName}>
+                <span className='block relative -top-24' id={idName}>
                     &nbsp;
                 </span>
                 <Component />
             </motion.section>
         );
-    }
+    };
 
 export default SectionWrapper;
