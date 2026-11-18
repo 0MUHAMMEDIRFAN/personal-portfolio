@@ -7,9 +7,14 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://muhammedirfan.netlify.app/assets/Zero-white-logo.png</image:loc>
+      <image:loc>https://muhammedirfan.netlify.app/assets/profile.jpg</image:loc>
       <image:title>Muhammed Irfan - Lead Software Engineer &amp; Frappe / ERPNext Developer</image:title>
-      <image:caption>Muhammed Irfan (0muhammedirfan) Portfolio Logo</image:caption>
+      <image:caption>Muhammed Irfan (0muhammedirfan) Official Photo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://muhammedirfan.netlify.app/assets/Zero-white-logo.png</image:loc>
+      <image:title>ZERO NEXA Logo - Muhammed Irfan Portfolio</image:title>
+      <image:caption>ZERO NEXA consultancy logo</image:caption>
     </image:image>
   </url>
 </urlset>
